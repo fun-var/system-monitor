@@ -1,8 +1,9 @@
 use sysinfo::{System};
 
+//fix
 pub fn display_system_uptime(system: &System) {
     println!("\nSystem Uptime:");
-    
+
     let uptime = sysinfo::System::uptime();
     println!("Uptime: {} seconds", uptime);
 }
