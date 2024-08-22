@@ -1,6 +1,5 @@
 use sysinfo::{System};
 
-//fix
 pub fn display_system_uptime(system: &System) {
     println!("\nSystem Uptime:");
 
@@ -24,4 +23,17 @@ pub fn display_memory_usage(system: &System) {
 
     println!("Total memory: {} GB", total_memory_gb);
     println!("Used memory: {} GB", used_memory_gb);
+}
+
+//fix
+pub fn display_temperatures(system: &System) {
+    println!("\nTemperatures:");
+
+    for cpu in system.cpus() {
+        if let Some(temp) = cpu.temperature() {
+            println!("CPU {}: {:.2}°C", cpu.name(), temp);
+        } else {
+            println!("CPU {}: Temperature data not available", cpu.name());
+        }
+    }
 }
